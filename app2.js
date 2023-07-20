@@ -18,7 +18,7 @@ app.get('/top', async (req, res) => {
     const $ = cheerio.load(html);
 
      // Obtener la tabla con la clase deseada
-     const tabla = $(`table.$('#table1')`);
+     const tabla = $(`$('#table1')`);
  
      // Crear un arreglo para almacenar los datos de la tabla
      const data = [];
