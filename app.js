@@ -3,7 +3,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 
 const app = express();
-const PORT = 3000; // Puedes cambiar el número de puerto según tus preferencias
+const PORT = 80; // Puedes cambiar el número de puerto según tus preferencias
 
 // Endpoint para obtener información del webscraping
 app.get('/top', async (req, res) => {
