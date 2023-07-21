@@ -19,7 +19,7 @@ app.get('/top', async (req, res) => {
 
      // Obtener la tabla con la clase deseada
     //  const tabla = $(`table.${'tables'}`);
-     const tabla = $(`table.$('#table1') `);
+     const tabla = $(`table.$('#table1')`);
      //$("#first") 
      // Crear un arreglo para almacenar los datos de la tabla
      const data = [];
