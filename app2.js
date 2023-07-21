@@ -18,8 +18,8 @@ app.get('/top', async (req, res) => {
     const $ = cheerio.load(html);
 
      // Obtener la tabla con la clase deseada
-     const tabla = $(`$('#table1')`);
- 
+     const tabla = $(`table.${'trendTable'}`);
+     //$("#first") 
      // Crear un arreglo para almacenar los datos de la tabla
      const data = [];
  
@@ -47,6 +47,7 @@ app.get('/top', async (req, res) => {
     res.status(500).json({ error: 'Ha ocurrido un error al obtener los datos' });
   }
 });
+
 
 
 
