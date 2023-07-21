@@ -25,10 +25,7 @@ app.get('/top', async (req, res) => {
     const tabla = $('#table1.tables');
      // Crear un arreglo para almacenar los datos de la tabla
      const data = [];
-     tabla.find('tr').each((index,row)=>{
-      console.log(row)
-     })
- 
+     console.log(tabla)
      // Recorrer las filas de la tabla (excepto la primera fila que contiene los encabezados)
      tabla.find('tr:not(:first-child)').each((index, row) => {
        const fila = $(row);
