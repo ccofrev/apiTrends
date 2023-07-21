@@ -18,7 +18,7 @@ app.get('/top', async (req, res) => {
     const $ = cheerio.load(html);
 
      // Obtener la tabla con la clase deseada
-     const tabla = $(`table.${'trendTable'}`);
+     const tabla = $(`table.${'tables'}`);
      //$("#first") 
      // Crear un arreglo para almacenar los datos de la tabla
      const data = [];
