@@ -5,6 +5,15 @@ const axios = require('axios');
 const app = express();
 const port = 3000;
 
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  next();
+});
+
 // Definir una ruta para el método GET
 app.get('/top', (req, res) => {
   const url = 'https://www.twitter-trending.com/chile/es'; // Reemplaza esto con la URL del sitio web que deseas scrapear
