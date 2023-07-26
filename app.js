@@ -15,8 +15,8 @@ app.use((req, res, next) => {
 });
 
 // Definir una ruta para el método GET
-app.get('/top', (req, res) => {
-  const url = 'https://www.twitter-trending.com/chile/es'; // Reemplaza esto con la URL del sitio web que deseas scrapear
+app.get('/diario', (req, res) => {
+  const url = 'https://www.twitter-trending.com/chile/es';
 
   axios.get(url)
     .then((response) => {
@@ -32,6 +32,33 @@ app.get('/top', (req, res) => {
         res.json({ description: metaDescription });
       } else {
         res.status(404).json({ error: 'No se encontró la etiqueta meta con nombre "description"' });
+      }
+    })
+    .catch((error) => {
+      console.error('Error al obtener la página:', error);
+      res.status(500).json({ error: 'Error al obtener la página' });
+    });
+});
+
+
+// Definir una ruta para el método GET
+app.get('/now', (req, res) => {
+  const url = 'https://www.twitter-trending.com/chile/es';
+
+  axios.get(url)
+    .then((response) => {
+      const html = response.data;
+      const $ = cheerio.load(html);
+
+      // Buscar la etiqueta meta con el nombre "description"
+      // const metaDescription = $('meta[name="description"]').attr('content').replace('..','').replace('Tendencias en Chile: ','').split(', ');
+      const metaDescription = $('script[type="application/ld+json"]')
+
+      // Verificar si se encontró la etiqueta
+      if (metaDescription) {
+        res.json(JSON.parse(metaDescription.html()));
+      } else {
+        res.status(404).json({ error: 'No se encontró la etiqueta' });
       }
     })
     .catch((error) => {
