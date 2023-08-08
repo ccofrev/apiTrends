@@ -10,6 +10,8 @@ const options = {
   cert: fs.readFileSync('/etc/letsencrypt/live/ccofre.space/fullchain.pem')
 };
 
+console.log("key",options.key)
+
 const app = express();
 // const port = 80;
 const port = 443;
