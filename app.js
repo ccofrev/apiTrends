@@ -2,8 +2,17 @@ const express = require('express');
 const cheerio = require('cheerio');
 const axios = require('axios');
 
+const https = require('https');
+const fs = require('fs');
+
+const options = {
+  key: fs.readFileSync('/etc/letsencrypt/live/ccofre.space/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/ccofre.space/cert.pem')
+};
+
 const app = express();
-const port = 80;
+// const port = 80;
+const port = 443;
 
 
 app.use((req, res, next) => {
@@ -68,6 +77,12 @@ app.get('/now', (req, res) => {
 });
 
 // Iniciar el servidor
-app.listen(port, () => {
-  console.log(`Servidor escuchando en http://localhost:${port}`);
+// app.listen(port, () => {
+//   console.log(`Servidor escuchando en http://localhost:${port}`);
+// });
+
+
+const server = https.createServer(options, app);
+server.listen(port, () => {
+  console.log(`Servidor HTTPS escuchando en el puerto ${port}`);
 });
