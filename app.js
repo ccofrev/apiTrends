@@ -7,7 +7,7 @@ const fs = require('fs');
 
 const options = {
   key: fs.readFileSync('/etc/letsencrypt/live/ccofre.space/privkey.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/live/ccofre.space/cert.pem')
+  cert: fs.readFileSync('/etc/letsencrypt/live/ccofre.space/fullchain.pem')
 };
 
 const app = express();
