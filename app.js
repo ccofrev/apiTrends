@@ -11,8 +11,8 @@ const options = {
 };
 
 const app = express();
-const port = 80;
-//const port = 443;
+// const port = 80;
+const port = 443;
 
 
 app.use((req, res, next) => {
@@ -82,6 +82,7 @@ app.get('/now', (req, res) => {
 // });
 
 
+// Iniciar el servidor
 const server = https.createServer(options, app);
 server.listen(port, () => {
   console.log(`Servidor HTTPS escuchando en el puerto ${port}`);
